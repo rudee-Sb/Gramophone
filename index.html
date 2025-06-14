@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gramaphone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <div class="custom_cursor">
+        <div class="ripple"></div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <!-- <img src="logo.png" alt="Gramaphone" class="logo_img"> -->
+                <i class="fa-solid fa-record-vinyl"></i>
+            </div>
+            <div class="nav_elems">
+                <ul>
+                    <li>&mdash;&mdash;</li>
+                    <li><a href="">Play <i class="fa-solid fa-play"></i></a></li>
+                    <li><a href="">Discover <i class="fa-solid fa-headphones"></i></a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero_sec">
+            <div class="side_cont left_line"></div>
+            <div class="side_cont right_line"></div>
+            
+            <div class="hero_cont">
+                <img src="assets/media/images/hero_img.jpg" alt="Gramaphone" class="target_img">
+                <svg>
+                    <defs>
+                        <filter id="distortFilter">
+                            <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turb" />
+                            <feDisplacementMap in="SourceGraphic" in2="turb" scale="30" xChannelSelector="R"
+                                yChannelSelector="G" />
+                        </filter>
+                    </defs>
+                </svg>
+
+                <div class="hero_text_cont">
+                    <h2 class="main_text">GRAMOPHONE</h2>
+                    <p class="sub_text">Where shadows sing and silence breaks</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="slider_sec">
+            <h2>slider_sec</h2>
+        </section>
+    </main>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="assets/js/main.js"></script>
+
+</html>
