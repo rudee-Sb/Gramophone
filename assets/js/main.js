@@ -244,5 +244,5 @@ function animate_scroll_text(id, triggerStart, offset = 100, speed = 1) {
 }
 
 animate_scroll_text("#text1", "95%", 400); // slow and floaty
-animate_scroll_text("#text2", "88%", 300); // mid speed
-animate_scroll_text("#text3", "83%", 250);  // faster rise
+animate_scroll_text("#text2", "88%", 350); // mid speed
+animate_scroll_text("#text3", "85%", 300);  // faster rise
