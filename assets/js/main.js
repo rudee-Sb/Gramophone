@@ -66,6 +66,24 @@ gsap.to(".hero_sec", {
     ease: "none"
 });
 
+// ZOOM IN for slider 
+gsap.fromTo(".slider_sec", {
+    opacity: 0,
+    scale: 0.35,
+},
+    {
+        scrollTrigger: {
+            trigger: ".slider_sec",
+            start: "top 95%",
+            end: "top 20%",
+            scrub: 1.5,
+        },
+        opacity: 1,
+        scale: 1,
+        ease: "power4.out"
+    }
+);
+
 // slider logic
 next.onclick = () => {
     active = active >= count - 1 ? count - 1 : active + 1;
@@ -118,7 +136,7 @@ function draw_waves(step) {
 }
 
 function animate_waves() {
-    wave_step += 1.3;
+    wave_step += .5;
     if (animate) draw_waves(wave_step);
     requestAnimationFrame(animate_waves); // Always call
 }
@@ -177,3 +195,54 @@ function animateFooterWaves() {
 }
 
 animateFooterWaves();
+
+function load_svg() {
+    fetch("assets/media/images/frame-1.svg")
+        .then((response) => { return response.text(); })
+        .then((svg) => {
+            document.getElementById('full_gramo').innerHTML = svg;
+
+            gsap.to("#vinyl_record", {
+                rotate: 360,
+                transformOrigin: "50% 50%",
+                repeat: -1,
+                duration: 6,
+                ease: "linear"
+            });
+        })
+}
+load_svg();
+
+function animate_scroll_text(id, triggerStart, offset = 100, speed = 1) {
+    const timeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".story_sec",
+            start: `top 35%`,
+            end: "bottom 50%",
+            scrub: true,
+            markers: false
+        }
+    });
+
+    timeline
+        .fromTo(id,
+            { y: offset, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                ease: "power3.out", // starts fast, slows mid
+            }
+        )
+        .to(id,
+            {
+                y: -offset,
+                opacity: 0,
+                ease: "power2.in", // lingers then fades
+            }
+        );
+
+}
+
+animate_scroll_text("#text1", "95%", 400); // slow and floaty
+animate_scroll_text("#text2", "88%", 300); // mid speed
+animate_scroll_text("#text3", "83%", 250);  // faster rise
