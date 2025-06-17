@@ -44,6 +44,48 @@ body::-webkit-scrollbar {
 }
 
 
+.bg_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #e5383b, #6a040f);
+    opacity: 0.3;
+    filter: blur(100px);
+    z-index: 1;
+    animation: float 10s ease-in-out 0.3s infinite;
+}
+
+.blob:nth-child(1) {
+    top: -5%;
+    left: 20%;
+}
+
+.blob:nth-child(2) {
+    top: 80%;
+    left: 80%;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-30px) scale(1.5);
+    }
+}
+
 .navbar {
     display: flex;
     align-items: center;
@@ -100,7 +142,6 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     padding: 1rem;
     margin: 0 3rem;
     z-index: 2;
@@ -112,52 +153,108 @@ main {
 }
 
 .album_cover .img_cont img {
-    width: 370px;
-    height: auto;
+    width: auto;
+    height: 450px;
     position: relative;
     z-index: 3;
     object-fit: cover;
 }
 
-.album_cover .text_cont {
+.album_text {
+    width: 700px;
+    height: 450px;
+    padding: 1rem;
     display: flex;
     flex-direction: row;
-    width: 370px;
+    align-items: center;
     justify-content: space-between;
+    color: #807c7e;
     font-family: 'Roboto Flex', sans-serif;
-    color: #f5f3f4;
-    font-style: normal;
-    padding: 10px 0;
-    text-transform: uppercase;
 }
 
-.album_cover .text_cont .album_name {
-    font-size: 1.5rem;
-    font-weight: 700;
+.blah {
+    height: 400px;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: auto;
 }
 
-.album_cover .text_cont .artist_name {
+.blah h2 {
+    font-size: 2.1rem;
+    letter-spacing: 10px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.main_text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main_text .left h3 {
+    font-size: 0.9rem;
+    letter-spacing: 5px;
+    padding-left: 20px;
+}
+
+.main_text .left h4 {
     font-size: 0.7rem;
-    font-weight: 400;
+    letter-spacing: 5px;
+    margin-top: 8px;
+    padding-left: 20px ;
 }
 
-.album_cover .text_cont .album_year {
-    font-size: 0.8rem;
-    font-weight: 400;
+.main_text .right h3 {
+    font-size: 0.7rem;
+    text-align: right;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
 }
 
-.album_text_main {
-    width: 700px;
-    height: 100%;
-    padding: 1rem;
+.sub_text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    color: #7b7a76;
+    font-size: 0.6rem;
+    letter-spacing: 5px;
+    padding-left: 20px;
 }
 
-.album_text_main h2 {
+.sub_text .left {
     text-align: left;
-    color: #706d6f;
-    font-family: 'Roboto Flex', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 12px;
+}
+
+.sub_text .right {
+    text-align: right;
+}
+
+.album_btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.album_btns button {
+    color: #000;
+    background-color: #e5383b;
+    border: 2px solid #e5383b;
+    padding: 8px 14px;
+    font-size: .7rem;
+    letter-spacing: 5px;
+    margin-left: 10px;
+    pointer-events: none;
+}
+
+#save {
+    background-color: transparent;
+    border: 2px solid #e5383b;
+    border-radius: 0;
+    color: #e5383b;
 }
 
 .text_strip {
@@ -170,7 +267,7 @@ main {
     padding: 8px 0;
     font-size: 12px;
     position: absolute;
-    bottom: 20%;
+    bottom: -10%;
     z-index: 0;
     overflow: hidden;
     white-space: nowrap;
@@ -225,7 +322,7 @@ footer {
     color: #f5f3f4;
 }
 
-.change_theme_btn{
+.change_theme_btn {
     background: transparent;
     border-radius: 50%;
     border: 1.4px solid #7b7a76;
