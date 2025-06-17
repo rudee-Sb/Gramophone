@@ -2,6 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const cursor = document.querySelector('.custom_cursor');
 const ripple = document.querySelector('.ripple');
+const mag_btns = document.querySelectorAll('.magnet_btn');
 
 // Ripple effect forcustom cursor
 document.addEventListener('mousemove', (e) => {
@@ -19,3 +20,42 @@ document.addEventListener('click', () => {
         { scale: 2.5, opacity: 0, duration: 0.5, ease: "power1.out" }
     );
 });
+
+document.addEventListener('mousemove', (e) => {
+    let attracted = false;
+
+    mag_btns.forEach(btn => {
+        const rect = btn.getBoundingClientRect();
+        const btnCenter = {
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2
+        };
+
+        const distx = e.clientX - btnCenter.x;
+        const disty = e.clientY - btnCenter.y;
+        const distance = Math.sqrt(distx ** 2 + disty ** 2);
+
+        if (distance < 100) {
+            attracted = true;
+            gsap.to(cursor, {
+                x: btnCenter.x,
+                y: btnCenter.y,
+                scale: 1.5,
+                borderColor: "#c85223",
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        }
+
+        if (!attracted) {
+            gsap.to(cursor, {
+                x: e.clientX,
+                y: e.clientY,
+                scale: 1,
+                duration: 0.2,
+                borderColor: "#fff",
+                ease: "power2.out"
+            });
+        }
+    });
+})
