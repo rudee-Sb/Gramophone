@@ -42,7 +42,6 @@ document.addEventListener('click', () => {
     );
 });
 
-
 // Turbulence animation
 let noise = 0;
 function animateDistortion() {
