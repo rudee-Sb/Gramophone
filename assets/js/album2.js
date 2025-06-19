@@ -21,6 +21,7 @@ document.addEventListener('click', () => {
     );
 });
 
+// magnetic effect for buttons
 document.addEventListener('mousemove', (e) => {
     let attracted = false;
 
@@ -58,4 +59,23 @@ document.addEventListener('mousemove', (e) => {
             });
         }
     });
+})
+
+// rotating vinyl on scrolling tracklist
+let last_scroll_top = 0;
+let current_rot = 0;
+
+document.querySelector(".right .list").addEventListener('scroll', function(e) {
+    let scroll_top = this.scrollTop;
+    let scroll_dir = scroll_top > last_scroll_top ? 1 : -1;
+
+    current_rot += 10 * scroll_dir;
+
+    gsap.to(".vinyl", {
+        rotation: current_rot,
+        duration: 0.3,
+        ease: "power1.out",
+    })
+
+    last_scroll_top = scroll_top;
 })
