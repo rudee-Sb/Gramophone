@@ -154,7 +154,6 @@ gsap.to(".cards", {
         start: "top 50%",
         end: "top 10%",
         scrub: true,
-        markers: true
     },
     opacity: 1,
     y: 0,
