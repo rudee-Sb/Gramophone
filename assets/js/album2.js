@@ -21,6 +21,14 @@ document.addEventListener('click', () => {
     );
 });
 
+// slide in animation for album text
+gsap.from(".stagr", {
+    y: 100,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.5,
+})
+
 // magnetic effect for buttons
 document.addEventListener('mousemove', (e) => {
     let attracted = false;
@@ -61,11 +69,26 @@ document.addEventListener('mousemove', (e) => {
     });
 })
 
+// fade in/out for tracklist section
+gsap.to(".tracklist_sec", {
+    scrollTrigger: {
+        trigger: ".tracklist_sec",
+        scroller: "body",
+        start: "top 70%",
+        end: "top 10%",
+        scrub: true,
+    },
+    opacity: 1,
+    y: 0,
+    duration: 3,
+    ease: "power4.out"
+});
+
 // rotating vinyl on scrolling tracklist
 let last_scroll_top = 0;
 let current_rot = 0;
 
-document.querySelector(".right .list").addEventListener('scroll', function(e) {
+document.querySelector(".right .list").addEventListener('scroll', function (e) {
     let scroll_top = this.scrollTop;
     let scroll_dir = scroll_top > last_scroll_top ? 1 : -1;
 
@@ -79,3 +102,19 @@ document.querySelector(".right .list").addEventListener('scroll', function(e) {
 
     last_scroll_top = scroll_top;
 })
+
+// opening tracks and album in spotify web
+document.addEventListener('DOMContentLoaded', () => {
+    const play_btns = document.querySelectorAll('.play');
+
+    play_btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const url = btn.getAttribute('data-url');
+            window.open(url, '_blank');
+        })
+    })
+});
+
+function home() {
+    window.location.href = "index.html"
+}

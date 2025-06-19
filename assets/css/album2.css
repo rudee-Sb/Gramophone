@@ -233,7 +233,7 @@ main {
     font-size: .7rem;
     letter-spacing: 5px;
     margin-left: 10px;
-    pointer-events: none;
+    cursor: none;
 }
 
 #save {
@@ -296,6 +296,8 @@ main {
     height: 100vh;
     overflow: hidden;
     z-index: 0;
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .blur_bg {
@@ -358,7 +360,7 @@ main {
 .track_cont .left .vinyl {
     position: relative;
     bottom: 6%;
-
+    transform-origin: center;
 }
 
 .track_cont .left .vinyl img {
