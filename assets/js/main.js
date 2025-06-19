@@ -1,22 +1,11 @@
+
 // GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const cursor = document.querySelector('.custom_cursor');
 const ripple = document.querySelector('.ripple');
-const slider = document.querySelector('.slider');
-const list = document.querySelector('.list');
-const albums = document.querySelectorAll('.list .albums');
-const prev = document.getElementById("prev");
-const next = document.getElementById("next");
-let count = albums.length;
-let active = 1;
-let left_transform = 0;
-let width_item = albums[active].offsetWidth;
-const canvas = document.querySelector('.btn_bg');
-const ctx = canvas.getContext("2d");
-const containers = document.querySelector('.btn_cont');
-let width = canvas.width = containers.offsetWidth;
-let height = canvas.height = containers.offsetHeight;
+
+
 
 let wave_step = 0;
 let animate = false;
@@ -65,98 +54,12 @@ gsap.to(".hero_sec", {
     ease: "none"
 });
 
-// ZOOM IN for slider 
-gsap.fromTo(".slider_sec", {
-    opacity: 0,
-    scale: 0.35,
-},
-    {
-        scrollTrigger: {
-            trigger: ".slider_sec",
-            start: "top 95%",
-            end: "top 20%",
-            scrub: 1.5,
-        },
-        opacity: 1,
-        scale: 1,
-        ease: "power4.out"
-    }
-);
-
-// slider logic
-next.onclick = () => {
-    active = active >= count - 1 ? count - 1 : active + 1;
-    run_carousel();
+function animateFooterWave() {
+    drawFooterWaves(footer_wave_step);
+    footer_wave_step += 1.6; 
+    requestAnimationFrame(animateFooterWave);
 }
-
-prev.onclick = () => {
-    active = active <= 0 ? 0 : active - 1;
-    run_carousel();
-}
-
-function run_carousel() {
-    prev.style.display = active == 0 ? 'none' : 'block';
-    next.style.display = active == count - 1 ? 'none' : 'block';
-
-    let old_active = document.querySelector('.albums.active');
-    if (old_active) old_active.classList.remove('active');
-
-    albums[active].classList.add('active');
-    left_transform = width_item * (active - 1) * - 1;
-
-    list.style.transform = `translateX(${left_transform}px)`;
-}
-run_carousel();
-
-// btn wave logic
-width = canvas.width = containers.offsetWidth;
-height = canvas.height = containers.offsetHeight;
-
-window.addEventListener('resize', () => {
-    width = canvas.width = containers.offsetWidth;
-    height = canvas.height = containers.offsetHeight;
-});
-
-function draw_waves(step) {
-    ctx.clearRect(0, 0, width, height);
-    ctx.strokeStyle = "rgba(255, 255, 255, 0.6)";
-    ctx.lineWidth = 1;
-
-    const line_count = 10;
-
-    for (let i = 0; i < line_count; i++) {
-        ctx.beginPath();
-        for (let x = 0; x < width; x++) {
-            let y = Math.sin((x + step + i * 15) * 0.05) * 5 + i * (height / line_count);
-            ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-    }
-}
-
-function animate_waves() {
-    wave_step += .5;
-    if (animate) draw_waves(wave_step);
-    requestAnimationFrame(animate_waves); // Always call
-}
-animate_waves();
-
-containers.addEventListener('mouseenter', () => {
-    animate = true;
-    gsap.to(".btn_bg", {
-        opacity: 1,
-        duration: 0.5
-    });
-    animate_waves();
-});
-
-containers.addEventListener('mouseleave', () => {
-    animate = false;
-    gsap.to(".btn_bg", {
-        opacity: 0,
-        duration: 0.5
-    });
-});
+animateFooterWave();
 
 // Set canvas size
 function resizeFooterCanvas() {
@@ -186,62 +89,97 @@ function drawFooterWaves(step) {
     }
 }
 
-// Animation loop
-function animateFooterWaves() {
-    footer_wave_step += 2;
-    drawFooterWaves(footer_wave_step);
-    requestAnimationFrame(animateFooterWaves);
-}
+// horizontal scroll animation
+const scrollText = document.querySelector(".scroll_wrapper");
+const textWidth = scrollText.scrollWidth;
 
-animateFooterWaves();
+gsap.to(".scroll_wrapper", {
+    x: -textWidth + window.innerWidth,
+    ease: "power4.out",
+    scrollTrigger: {
+        trigger: ".scroll_sec",
+        start: "top top",
+        end: "+=" + textWidth,
+        scrub: 2,
+        pin: true,
+        markers: true
+    }
+});
 
-function load_svg() {
-    fetch("assets/media/images/frame-1.svg")
-        .then((response) => { return response.text(); })
-        .then((svg) => {
-            document.getElementById('full_gramo').innerHTML = svg;
+const overlays = [
+    { id: "#album1", rotation: 180, x: 100, y: -80, scrub: 1.5 },
+    { id: "#album2", rotation: -270, x: -120, y: 100, scrub: 2 },
+    { id: "#album3", rotation: 360, x: 60, y: -100, scrub: 3 },
+    { id: "#album4", rotation: -180, x: -80, y: 60, scrub: 1 }
+];
 
-            gsap.to("#vinyl_record", {
-                rotate: 360,
-                transformOrigin: "50% 50%",
-                repeat: -1,
-                duration: 6,
-                ease: "linear"
-            });
-        })
-}
-load_svg();
-
-function animate_scroll_text(id, triggerStart, offset = 100, speed = 1) {
-    const timeline = gsap.timeline({
+overlays.forEach(({ id, rotation, x, y, scrub }) => {
+    gsap.to(id, {
+        rotation,
+        x,
+        y,
+        opacity: 0.01,
         scrollTrigger: {
-            trigger: ".story_sec",
-            start: `top 35%`,
-            end: "bottom 50%",
-            scrub: true,
-            markers: false
+            trigger: ".scroll_sec",
+            start: "top top",
+            end: "+=" + textWidth,
+            scrub,
         }
     });
 
-    timeline
-        .fromTo(id,
-            { y: offset, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                ease: "power3.out", // starts fast, slows mid
+    gsap.fromTo(id,
+        { opacity: 0 },
+        {
+            opacity: 1,
+            scrollTrigger: {
+                trigger: ".scroll_sec",
+                start: "top center",
+                end: "center center",
+                scrub: true,
             }
-        )
-        .to(id,
-            {
-                y: -offset,
-                opacity: 0,
-                ease: "power2.in", // lingers then fades
-            }
-        );
+        }
+    );
+});
 
-}
+// fade-in for card section
+gsap.set(".cards", {
+    opacity: 0,
+    y: 100
+});
 
-animate_scroll_text("#text1", "95%", 400); // slow and floaty
-animate_scroll_text("#text2", "88%", 350); // mid speed
-animate_scroll_text("#text3", "85%", 300);  // faster rise
+gsap.to(".cards", {
+    scrollTrigger: {
+        trigger: ".cards_sec",
+        scroller: "body",
+        start: "top 50%",
+        end: "top 10%",
+        scrub: true,
+        markers: true
+    },
+    opacity: 1,
+    y: 0,
+    ease: "power4.out"
+});
+
+
+// rotate vinyl on card mouseenter and stop on leave
+document.querySelectorAll('.cards').forEach(card => {
+    const img = card.querySelector('img');
+
+    card.addEventListener('mouseenter', () => {
+        gsap.to(img, {
+            rotate: 360,
+            duration: 2,
+            repeat: -1,
+            ease: "power1.out"
+        });
+    });
+
+    card.addEventListener('mouseleave', () => {
+        gsap.to(img, {
+            rotate: 0,
+            duration: 1,
+            ease: "power1.inOut"
+        });
+    });
+})
