@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    cursor: none;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.custom_cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fffcf2;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ripple {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #fffcf2;
+    opacity: 0;
+}
+
+.bg_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 5px;
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob:nth-child(1) {
+    top: 5%;
+    left: 30%;
+    width: 250px;
+    height: 250px;
+    background-color: #c50000;
+    animation: blobRot 10s 0.3s infinite;
+}
+
+.blob:nth-child(2) {
+    top: 70%;
+    left: 70%;
+    width: 300px;
+    height: 300px;
+    background-color: rgb(58, 26, 176);
+    animation: blobRot 7s 0.3s reverse infinite;
+}
+
+.blob:nth-child(3) {
+    top: 65%;
+    left: 9%;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(112, 64, 27);
+    animation: blobRot 12s 0.3s infinite;
+}
+
+@keyframes blobRot {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 3rem;
+    padding: 1rem;
+    opacity: 0.7;
+}
+
+.logo i {
+    font-size: 2rem;
+    color: #c50000;
+}
+
+.nav_elems ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav_elems ul li,
+a {
+    list-style: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgb(183, 186, 189);
+    position: relative;
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    cursor: none;
+}
+
+.nav_elems ul li i {
+    color: #c50000;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.nav_elems ul li i:hover {
+    color: #c85223;
+}
+
+.hero_sec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 1200px;
+    margin: 2.5rem auto;
+    padding: 3rem;
+}
+
+.line {
+    display: inline-block;
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+
+.hero_title {
+    color: #fff;
+    font-size: 15vw;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    white-space: nowrap;
+    text-align: center;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.hero_title .s1 {
+    color: #c50000;
+}
+
+.hero_title .s2 {
+    color: rgb(58, 26, 176);
+}
+
+.hero_sub {
+    color: rgb(61, 176, 61);
+    font-size: 2rem;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    z-index: 1;
+    opacity: 1;
+    filter: brightness(1.5);
+}
+
+.svg_cont {
+    width: 700px;
+    height: 700px;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.album_sec {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    opacity: 0;
+    width: 100%;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.img_cont {
+    height: 100%;
+    width: 400px;
+}
+
+.img_cont img {
+    height: 100%;
+    width: 400px;
+    object-fit: cover;
+}
+
+.track_cont {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+    padding: 10px;
+    justify-content: space-between;
+    border-top: 1.4px solid #858585;
+    border-bottom: 1.4px solid #858585;
+}
+
+.track {
+    width: 440px;
+    height: 75px;
+    display: flex;
+    padding: 50px 20px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.track:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(173, 255, 178, 0.3);
+}
+
+.track .track_num {
+    font-family: 'Limelight', cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;
+}
+
+.track .artist {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 350px;
+    padding: 0 1rem;
+    color: #c50000;
+    font-weight: 800;
+    font-family: "Tiro Devanagari Hindi", serif;
+    font-style: normal;
+}
+
+.artist .track_title {
+    width: 300px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.artist .artist_name {
+    font-size: 0.8rem;
+}
+
+.track .track_time {
+    color: #fff;
+    font-size: .8rem;
+    font-family: "Roboto Flex", sans-serif;
+    font-weight: 700;
+}
+
+footer {
+    margin: 0 3rem;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-top: 2px solid #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer_logo {
+    color: #c50000;
+    font-family: "Roboto Flex", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.footer_logo:hover {
+    color: #858585;
+}
+
+.change_theme_btn {
+    background: transparent;
+    border-radius: 50%;
+    border: 1.4px solid #c50000;
+    cursor: none;
+}
+
+.change_theme_btn i {
+    color: #c50000;
+    padding: 8px;
+    font-size: .8rem;
+}
+
+.change_theme_btn:hover {
+    border: 1.4px solid #858585;
+}
+
+.change_theme_btn i:hover {
+    color: #858585;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gramaphone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/album4.css">
+</head>
+
+<body>
+    <div class="custom_cursor">
+        <div class="ripple"></div>
+    </div>
+
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <!-- <img src="logo.png" alt="Gramaphone" class="logo_img"> -->
+                <i class="fa-solid fa-record-vinyl" onclick=home()></i>
+            </div>
+
+            <div class="nav_elems">
+                <ul>
+                    <li>&mdash;&mdash;</li>
+                    <li><a href="">Play <i class="fa-solid fa-play"></i></a></li>
+                    <li><a href="">Discover <i class="fa-solid fa-headphones"></i></a></li>
+                    <li><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero_sec">
+            <h1 class="hero_title glitch">
+                <span class="line">TERI</span>
+                <span class="line s1">MAIYAT</span><br>
+                <span class="line s2">KE</span>
+                <span class="line">GAANE</span>
+            </h1>
+            <p class="hero_sub line">CHAAAR DIWARI</p>
+            <svg class="svg_cont"></svg>
+        </section>
+
+
+        <section class="album_sec">
+
+            <div class="bg_container">
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+            </div>
+
+            <div class="img_cont">
+                <img src="assets/media/images/chardiawri.jpg" alt="CHAAR Diwari">
+            </div>
+            <div class="track_cont">
+                <div class="track">
+                    <h3 class="track_num">1.</h3>
+                    <div class="artist">
+                        <p class="track_title">मेरा सामान कहाँ है ?</p>
+                        <p class="artist_name">Chaar Diwari</p>
+                    </div>
+                    <p class="track_time">2:47</p>
+                </div>
+                <div class="track">
+                    <h3 class="track_num">2.</h3>
+                    <div class="artist">
+                        <p class="track_title">क्या</p>
+                        <p class="artist_name">Ft. Arpit Bala</p>
+                    </div>
+                    <p class="track_time">2:40</p>
+                </div>
+                <div class="track">
+                    <h3 class="track_num">3.</h3>
+                    <div class="artist">
+                        <p class="track_title">आँख बंद</p>
+                        <p class="artist_name">Ft. Mc Kode</p>
+                    </div>
+                    <p class="track_time">2:05</p>
+                </div>
+                <div class="track">
+                    <h3 class="track_num">4.</h3>
+                    <div class="artist">
+                        <p class="track_title">मिटटी
+                        <p>
+                        <p class="artist_name">Ft. Yashraj</p>
+                    </div>
+                    <p class="track_time">2:52</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="end_sec">
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer_logo">
+            <h3>Gramaphone</h3>
+        </div>
+        <div>
+            <button class="change_theme_btn" id="theme_btn"><i class="fa-solid fa-arrows-rotate"></i></button>
+        </div>
+    </footer>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="assets/js/album4.js"></script>
+
+</html>

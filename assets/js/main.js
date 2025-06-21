@@ -102,7 +102,6 @@ gsap.to(".scroll_wrapper", {
         end: "+=" + textWidth,
         scrub: 2,
         pin: true,
-        markers: true
     }
 });
 
