@@ -35,9 +35,9 @@ window.addEventListener("DOMContentLoaded", () => {
         {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: 0.7,
             ease: "power3.out",
-            stagger: 0.3,
+            stagger: 0.2,
             delay: 1
         }
     );
@@ -51,7 +51,7 @@ gsap.to(".album_sec", {
         start: "top 67%",
         end: "bottom center-=20",
         scrub: true,
-        markers: true
+        markers: false
     },
     opacity: 1,
     duration: 1,
