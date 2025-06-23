@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +11,7 @@ body {
     height: 100%;
     cursor: none;
     display: flex;
-    background-color: #3a4e64;
+    background-color: #637282;
     position: relative;
     z-index: -1;
     overflow: hidden;
@@ -52,27 +54,143 @@ body::-webkit-scrollbar {
 
 .container {
     position: relative;
-    width: 80vw;
-    height: 80vh;
+    width: 85vw;
+    height: 85vh;
     border-radius: 24px;
     overflow: hidden;
+}
+
+.split_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 0;
+}
+
+.left_bg,
+.right_bg {
+    height: 100%;
+}
+
+.left_bg {
+    width: 65%;
+    background: url(/assets/media/images/album1.jpg) center/cover no-repeat;
+}
+
+.right_bg {
+    width: 35%;
+    background-color: #444;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 25px;
+}
+
+.navbar .logo label {
+    color: rgb(255, 255, 255);
+    font-size: 1.8rem;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+
+.nav_items ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    pointer-events: none;
+}
+
+.nav_items ul li {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.nav_items li a {
+    text-decoration: none;
+}
+
+.nav_items li i {
+    color: #fff;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1.8px solid rgba(255, 255, 255, 0.192);
+    background: transparent;
+}
+
+.main_cont {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 25px;
+    width: 100%;
+    height: 100%;
+}
+
+.left,
+.right,
+.center {
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.left {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.blur_bg {
-    position: absolute;
-    inset: 0;
-    background: url('/assets/media/images/album1.jpg') center/cover no-repeat;
-    filter: blur(12px);
-    transform: scale(1.1);
-    z-index: 0;
+.left .text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    text-transform: uppercase;
+    position: relative;
+    top: -20%;
+    left: 30%;
 }
 
-.content {
-    position: relative;
-    z-index: 1;
+.left .text .album_name {
     color: #fff;
-    text-align: center;
+    font-size: 10rem;
+    font-family: 'Roboto Flex', sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    line-height: 8rem;
 }
+
+.left .text .artist {
+    color: #fff;
+    font-size: 2rem;
+    font-family: 'Roboto Flex',sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    padding-left: 5px;
+}
+
