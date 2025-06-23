@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
 
 * {
     margin: 0;
@@ -57,7 +58,6 @@ body::-webkit-scrollbar {
     width: 85vw;
     height: 85vh;
     border-radius: 24px;
-    overflow: hidden;
 }
 
 .split_bg {
@@ -218,4 +218,66 @@ body::-webkit-scrollbar {
     flex-direction: column;
     gap: 5px;
     letter-spacing: 2px;
+}
+
+.right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    height: 100%;
+    overflow: visible;
+    position: relative;
+}
+
+.right .tracklist {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    top: 10%;
+    right: -35%;
+    max-height: 300px;
+    scrollbar-width: none;
+    padding-right: 20px;
+    overflow-y: auto;
+}
+
+.right .tracklist::-webkit-scrollbar {
+    display: none;
+}
+
+.tracklist .item {
+    background-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(2px);
+    padding: 18px;
+    border-radius: 12px;
+    width: 260px;
+    transition: transform 0.3s ease;
+    list-style: none;
+}
+
+.tracklist .item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(10px);
+}
+
+.tracklist .item .list_items {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.tracklist .list_items h3 {
+    color: #768290;
+    font-family: 'Limelight';
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.tracklist .list_items p {
+    color: #fff;
+    font-family: monospace;
+    font-weight: 400;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
 }
