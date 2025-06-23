@@ -181,3 +181,7 @@ document.querySelectorAll('.cards').forEach(card => {
         });
     });
 })
+
+function home() {
+    window.location.href = "index.html"
+}

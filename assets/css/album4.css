@@ -280,19 +280,20 @@ a {
 
 .artist .track_title {
     width: 300px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
 }
 
 .artist .artist_name {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .track .track_time {
     color: #fff;
-    font-size: .8rem;
+    font-size: .9rem;
     font-family: "Roboto Flex", sans-serif;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 footer {

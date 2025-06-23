@@ -9,8 +9,8 @@ document.addEventListener('mousemove', (e) => {
     gsap.to(cursor, {
         x: e.clientX - 15,
         y: e.clientY - 15,
-        duration: 0.15,
-        ease: "power2.out"
+        duration: 0.3,
+        ease: "power4.out"
     });
 });
 
@@ -58,3 +58,7 @@ gsap.to(".album_sec", {
     ease: "power1.out",
     y: -100
 })
+
+function home() {
+    window.location.href = "index.html"
+}
