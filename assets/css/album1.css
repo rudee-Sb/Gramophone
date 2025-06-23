@@ -82,7 +82,7 @@ body::-webkit-scrollbar {
 
 .right_bg {
     width: 35%;
-    background-color: #444;
+    background: url(/assets/media/images/album1_left.jpg) center/cover no-repeat;
 }
 
 .content {
@@ -101,6 +101,7 @@ body::-webkit-scrollbar {
     align-items: center;
     justify-content: space-between;
     padding: 20px 25px;
+    pointer-events: none;
 }
 
 .navbar .logo label {
@@ -116,7 +117,6 @@ body::-webkit-scrollbar {
     display: flex;
     align-items: center;
     list-style: none;
-    pointer-events: none;
 }
 
 .nav_items ul li {
@@ -126,19 +126,32 @@ body::-webkit-scrollbar {
     align-items: center;
     justify-content: center;
     margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+}
+
+.nav_items ul li:hover {
+    backdrop-filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.25));
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
 }
 
 .nav_items li a {
     text-decoration: none;
 }
 
-.nav_items li i {
+.nav_items ul li a i {
     color: #fff;
     font-size: 1rem;
     padding: 12px;
     border-radius: 4px;
-    border: 1.8px solid rgba(255, 255, 255, 0.192);
+    border: 1.8px solid rgba(255, 255, 255, 0.2);
     background: transparent;
+}
+
+.nav_items ul li a i:hover {
+    color: rgba(255, 255, 255, 0.1);
 }
 
 .main_cont {
@@ -167,16 +180,16 @@ body::-webkit-scrollbar {
 
 .left .text {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     text-align: left;
     text-transform: uppercase;
     position: relative;
-    top: -20%;
     left: 30%;
+    height: 350px;
 }
 
-.left .text .album_name {
+.left .main_text .album_name {
     color: #fff;
     font-size: 10rem;
     font-family: 'Roboto Flex', sans-serif;
@@ -185,12 +198,24 @@ body::-webkit-scrollbar {
     line-height: 8rem;
 }
 
-.left .text .artist {
+.left .main_text .artist {
     color: #fff;
     font-size: 2rem;
-    font-family: 'Roboto Flex',sans-serif;
+    font-family: 'Roboto Flex', sans-serif;
     font-weight: 800;
     font-style: normal;
     padding-left: 5px;
 }
 
+.left .sub_text {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Roboto Flex', sans-serif;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    letter-spacing: 2px;
+}
