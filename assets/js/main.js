@@ -1,4 +1,3 @@
-
 // GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +13,7 @@ const footer_canvas = document.querySelector('.footer_wave');
 const footerCtx = footer_canvas.getContext('2d');
 let footer_wave_step = 0;
 
-// Ripple effect forcustom cursor
+// Ripple effect for custom cursor
 document.addEventListener('mousemove', (e) => {
     gsap.to(cursor, {
         x: e.clientX - 15,
