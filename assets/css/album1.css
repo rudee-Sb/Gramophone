@@ -61,6 +61,7 @@ body::-webkit-scrollbar {
 
 .split_bg {
     position: absolute;
+    overflow: hidden;
     top: 0;
     left: 0;
     width: 100%;
@@ -76,8 +77,24 @@ body::-webkit-scrollbar {
 
 .left_bg {
     width: 65%;
-    background: url(/assets/media/images/album1.jpg) center/cover no-repeat;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
 }
+
+.inner_img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 100%;
+    background: url(/assets/media/images/album1.jpg) center/cover no-repeat;
+    background-size: cover;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
 
 .right_bg {
     width: 35%;
@@ -254,11 +271,11 @@ body::-webkit-scrollbar {
     width: 260px;
     transition: transform 0.3s ease;
     list-style: none;
+    transform: translateX(100px);
 }
 
 .tracklist .item:hover {
     background-color: rgba(255, 255, 255, 0.15);
-    transform: translateX(10px);
 }
 
 .tracklist .item .list_items {
